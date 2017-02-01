@@ -2,13 +2,21 @@
 <html>
 <head>
   <title>Examenfinal</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'bootstrap', media: 'all' %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+
+  <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag 'bootstrap' %>
+
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
+  <%= render 'navbar' %>
+  <div class="container">
+    <p class="notice"><%= notice %></p>
+    <%= yield %>
+    <p class="alert"><%= alert %></p>
+  </div>
 
 </body>
 </html>
