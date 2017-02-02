@@ -17,6 +17,9 @@
 
 <p>
   <strong>Imágenes</strong>
+    <%= image_tag @producto.galleries.first.image_url(:medium) %>
+    <%= image_tag @producto.galleries.second.image_url(:medium) %>
+
 </p>
 
 

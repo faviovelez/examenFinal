@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'pages#index'
 
   get 'pages/index'
+  get 'productos/buscar'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

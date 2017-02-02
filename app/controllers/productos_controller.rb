@@ -1,9 +1,18 @@
 class ProductosController < ApplicationController
   before_action :set_producto, only: [:show, :edit, :update, :destroy]
   before_action :set_all_products
+
   # GET /productos
   # GET /productos.json
   def index
+  end
+
+  def buscar
+    if params[:producto][:buscar].nil?
+      @productos = []
+    else
+      @productos = Producto.search params[:producto][:buscar]
+    end
   end
 
   # GET /productos/1
