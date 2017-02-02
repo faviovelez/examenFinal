@@ -17,15 +17,18 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Catálogo de productos <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
+            <% if params[:controller] != 'productos' || params[:id] == nil %>
+              <li><%= link_to 'Nuevo Producto', new_producto_path %></li>
+              <li><%= link_to 'Mostrar catálogo', productos_path %></li>
+            <% elsif params[:id] != nil %>
+                <li><%= link_to 'Nuevo Producto', new_producto_path %></li>
+                <li><%= link_to 'Mostrar Catálogo', productos_path %></li>
+                <li><%= link_to 'Editar Producto', edit_producto_path(@producto) %></li>
+                <li><%= link_to 'Eliminar Producto', @producto, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+
+            <% end %>
           </ul>
         </li>
       </ul>
@@ -55,8 +58,6 @@
             <li>
               <%= link_to 'Cambia tu contraseña', edit_user_registration_path %>
             </li>
-
-
             <% end %>
           </ul>
         </li>
