@@ -11,10 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170201183614) do
+ActiveRecord::Schema.define(version: 20170201210232) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "galleries", force: :cascade do |t|
+    t.integer  "producto_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "image"
+  end
+
+  add_index "galleries", ["producto_id"], name: "index_galleries_on_producto_id", using: :btree
+
+  create_table "productos", force: :cascade do |t|
+    t.string   "nombre"
+    t.text     "descripcion"
+    t.integer  "cantidad"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -34,4 +51,5 @@ ActiveRecord::Schema.define(version: 20170201183614) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "galleries", "productos"
 end

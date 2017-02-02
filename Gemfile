@@ -47,9 +47,9 @@ end
 
 gem 'devise'
 
-gem 'rmagick'
-
 gem 'carrierwave', '~> 1.0'
+
+gem 'rmagick'
 
 gem 'elasticsearch-model'
 
